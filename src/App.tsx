@@ -1,10 +1,12 @@
+import Hero from "./pages/Hero"
 import TestApi from "./pages/TestApi"
 
 const App = () => {
   return (
-    <>
-      <TestApi />
-    </>
+    <div className="min-h-dvh">
+      {/* <TestApi /> */}
+      <Hero />
+    </div>
   )
 }
 

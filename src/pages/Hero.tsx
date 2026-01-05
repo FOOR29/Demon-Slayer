@@ -19,10 +19,10 @@ const Hero = () => {
                     {loading && <span>Loading...</span>}
                     {characters_hero?.map(character => (
                         <div
-                            className="w-52 h-70 bg-amber-200 overflow-hidden flex justify-center items-center border-2 border-gray-400"
+                            className="w-52 h-70 bg-black overflow-hidden flex justify-center items-center border-2 border-gray-400"
                             key={character.id}>
                             <img
-                                className="w-full h-auto scale-150 translate-y-23 bg-amber-200"
+                                className="w-full h-auto scale-150 translate-y-23 bg-black"
                                 src={character.img}
                                 alt={character.name} />
                         </div>

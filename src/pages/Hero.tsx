@@ -14,7 +14,7 @@ const Hero = () => {
         <div className="min-h-screen bg-green-500 flex justify-center flex-col items-center gap-7">
             <section>
                 {/* img presentation */}
-                <div className="bg-amber-500 flex items-center gap-3.5">
+                <div className="bg-amber-500 grid grid-cols-6 gap-3.5">
                     {error && <span>Error: {error}</span>}
                     {loading && <span>Loading...</span>}
                     {characters_hero?.map(character => (

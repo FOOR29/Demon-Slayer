@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
 import { CORS_PROXY, DEMON_SLAYER_API, HERO_CHARACTERS } from "../config/api"
 import { UseFetch } from "../hooks/UseFetch"
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Hero = () => {
 
@@ -25,10 +27,11 @@ const Hero = () => {
                             whileTap={{ scale: 0.9 }}
                             className="w-52 h-70 bg-black overflow-hidden flex justify-center items-center border-2 border-gray-400"
                             key={character.id}>
-                            <img
+                            <LazyLoadImage
                                 className="w-full h-auto scale-150 translate-y-23 bg-black"
                                 src={character.img}
-                                alt={character.name} />
+                                alt={character.name}
+                                effect="blur" />
                         </motion.div>
                     ))}
                 </div>

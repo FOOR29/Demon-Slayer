@@ -1,3 +1,4 @@
+import CharactersSection from "./pages/CharactersSection"
 import Hero from "./pages/Hero"
 import TestApi from "./pages/TestApi"
 
@@ -6,6 +7,7 @@ const App = () => {
     <div className="min-h-dvh">
       {/* <TestApi /> */}
       <Hero />
+      <CharactersSection />
     </div>
   )
 }

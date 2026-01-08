@@ -1,45 +1,33 @@
-import { motion } from "motion/react";
 import { CORS_PROXY, DEMON_SLAYER_API, HERO_CHARACTERS } from "../config/api"
 import { UseFetch } from "../hooks/UseFetch"
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import Card from "../components/ui/Card"
 
 const Hero = () => {
+    const { data, loading, error } = UseFetch(
+        `${CORS_PROXY}${DEMON_SLAYER_API}?limit=45`
+    )
 
-    const { data, loading, error } = UseFetch(`${CORS_PROXY}${DEMON_SLAYER_API}?limit=45`)
-    //filter pricipal chracaters
-    const characters_hero = data.filter(character =>
+    const characters_hero = data.filter((character) =>
         HERO_CHARACTERS.includes(character.id)
     )
 
-
     return (
-        <div className="min-h-screen bg-green-500 flex justify-center flex-col items-center gap-7">
-            <section>
-                {/* img presentation */}
-                <div className="bg-amber-500 grid grid-cols-6 gap-3.5">
-                    {error && <span>Error: {error}</span>}
-                    {loading && <span>Loading...</span>}
-                    {characters_hero?.map(character => (
-                        <motion.div
-                            initial={{ scale: 1 }}
-                            whileHover={{ scale: 1.1, rotate: 1 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="w-52 h-70 bg-black overflow-hidden flex justify-center items-center border-2 border-gray-400"
-                            key={character.id}>
-                            <LazyLoadImage
-                                className="w-full h-auto scale-150 translate-y-23 bg-black"
-                                src={character.img}
-                                alt={character.name}
-                                effect="blur" />
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
-            <div className="bg-amber-600 h-fit w-fit text-center font-bold text-6xl">
+        <section className="min-h-screen bg-neutral-900 flex flex-col items-center gap-10 p-10">
+            <div className="bg-amber-600 px-6 py-2 rounded-xl text-center font-bold text-4xl md:text-5xl">
                 <h2>Demon Slayer</h2>
             </div>
-        </div>
+
+            {error && <span className="text-white">Error: {error}</span>}
+            {loading && <span className="text-white">Loading...</span>}
+
+            {!loading && !error && (
+                <div className="bg-transparent grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {characters_hero.map((character) => (
+                        <Card key={character.id} character={character} />
+                    ))}
+                </div>
+            )}
+        </section>
     )
 }
 

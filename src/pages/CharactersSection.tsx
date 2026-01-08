@@ -1,9 +1,9 @@
-import CardDemon from "../components/CardDemon"
+import ListCard from "../components/ListCard"
 
 const CharactersSection = () => {
     return (
         <div>
-            <CardDemon />
+            <ListCard />
         </div>
     )
 }
